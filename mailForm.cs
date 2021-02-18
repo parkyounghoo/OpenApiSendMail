@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 
-namespace KONEPS_KPC_MailBatch
+namespace test
 {
     internal class mailForm
     {
@@ -26,25 +26,6 @@ namespace KONEPS_KPC_MailBatch
             StringBuilder mailForm = new StringBuilder();
 
             #region MailForm
-            mailForm.Append("<font style='font-size:12px; font-family:'Malgun Gothic''>안녕하세요</font>");
-            mailForm.Append("<br />");
-            mailForm.Append("<font style='font-size:12px; font-family:'Malgun Gothic''>디지털혁신센터 최민석입니다.</font>");
-            mailForm.Append("<br />");
-            mailForm.Append("<br />");
-            mailForm.Append("<font style='font-size:12px; font-family:'Malgun Gothic''>금일 나라장터 입찰정보 전달합니다.</font>");
-            mailForm.Append("<br />");
-            mailForm.Append("<font style='font-size:12px; font-family:'Malgun Gothic''>관련 내용 업무에 참고하시기 바랍니다.</font>");
-            mailForm.Append("<br />");
-            mailForm.Append("<font style='font-size:12px; font-family:'Malgun Gothic''>( * 입찰 정보가 없는 경우 메일 발송을 하지 않습니다.)</font>");
-            mailForm.Append("<br /><br />");
-            mailForm.Append("<font style='font-size:12px; color:blue; font-weight:bold;font-family:'Malgun Gothic''>* 나라장터 등록일자 : </font>");
-            mailForm.Append("<font style='font-size:12px; font-weight:bold;font-family:'Malgun Gothic''>" + DateTime.Now.AddDays(-1).ToString("yyyy.MM.dd") + "</font>");
-            mailForm.Append("<br /><br />");
-            mailForm.Append("<font style='font-size:12px; color: blue; font-weight:bold;font-family:'Malgun Gothic''>* 검색키워드 : </font>");
-            mailForm.Append("<font style='font-size:12px; font-weight: bold;font-family:'Malgun Gothic''>" + keyword + "</font>");
-            mailForm.Append("<br />");
-            mailForm.Append("&nbsp;&nbsp;<font style='font-size:12px; font-family:'Malgun Gothic''>- 입찰정보 키워드 변경은 ERP (일반업무 >> 나라장터입찰정보)에서 수정 가능합니다.</font>");
-            mailForm.Append("<div style='margin: 20px auto 0px; width: 800px;'>");
             mailForm.Append("<span style='font-weight: bold;'>[ 사전규격 - " + dtSub.Rows.Count + "건 ]</span>");
             mailForm.Append("<table style='margin-bottom:40px;border:1px solid rgb(230, 230, 230); border-image:none; width:100%; text-align:center; color:rgb(88, 88, 88); font-size:11.5px; margin-top:5px; border-collapse:collapse; table-layout:fixed; -ms-overflow-y:auto; max-height:200px;'>");
             mailForm.Append("<tbody>");
@@ -156,87 +137,6 @@ namespace KONEPS_KPC_MailBatch
 
             #endregion MailForm
 
-            #region mailForm
-
-            //mailForm.Append(@"<html>");
-
-            //#region table style
-
-            //mailForm.Append("<head>");
-            ////mailForm.Append("<style type='text/css'>");
-            ////mailForm.Append("table.type11 { border-collapse: separate; border-spacing: 1px; text-align: center; line-height: 1.5; margin: 20px 10px; }");
-            ////mailForm.Append("table.type11 th { padding: 10px; font-weight: bold; vertical-align: top; color: #fff; background: #0c588f; }");
-            ////mailForm.Append("table.type11 td { padding: 10px; vertical-align: top; border-bottom: 1px solid #ccc; background: #eee; }");
-            ////mailForm.Append("</style>");
-            //mailForm.Append("</head>");
-
-            //#endregion table style
-
-            //mailForm.Append("   <body>");
-            //mailForm.Append("       안녕하세요 KPC입니다. 금일 나라장터 입찰공고 내용입니다.");
-            //mailForm.Append("       <br />");
-            //mailForm.Append("       참조 부탁드립니다.");
-            //mailForm.Append("       <br /><br />");
-            //mailForm.Append("       <label style='color: blue; font-weight:bold'>[검색일자] : </label>");
-            //mailForm.Append("<label style='font-weight: bold;' >" + DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd") + "</label>");
-            //mailForm.Append("       <br />");
-            //mailForm.Append("       <label style='color: blue; font-weight:bold'>[검색어] : </label>");
-            //mailForm.Append("<label style='font-weight: bold;' >" + keyword + "</label>");
-            //mailForm.Append("       <table style= 'border-collapse: separate; font-size:11px; border-spacing: 1px; text-align: center; line-height: 1.5; margin: 20px 10px;'>");
-            //mailForm.Append("           <thead>");
-            //mailForm.Append("               <tr>");
-            //mailForm.Append("                   <th style='padding: 10px; font-weight: bold; vertical-align: top; color: #fff; background: #0c588f;width:25px'>업무</th>");
-            //mailForm.Append("                   <th style='padding: 10px; font-weight: bold; vertical-align: top; color: #fff; background: #0c588f;'>공고번호-차수</th>");
-            //mailForm.Append("                   <th style='padding: 10px; font-weight: bold; vertical-align: top; color: #fff; background: #0c588f;'>공고명</th>");
-            //mailForm.Append("                   <th style='padding: 10px; font-weight: bold; vertical-align: top; color: #fff; background: #0c588f;'>공고기관</th>");
-            //mailForm.Append("                   <th style='padding: 10px; font-weight: bold; vertical-align: top; color: #fff; background: #0c588f;'>계약방법</th>");
-            //mailForm.Append("                   <th style='padding: 10px; font-weight: bold; vertical-align: top; color: #fff; background: #0c588f;width:50px'>분류</th>");
-            //mailForm.Append("                   <th style='padding: 10px; font-weight: bold; vertical-align: top; color: #fff; background: #0c588f;width:60px'>입찰개시일시</br>(입찰마감일시)</th>");
-            //mailForm.Append("               </tr>");
-            //mailForm.Append("           </thead>");
-            //mailForm.Append("           <tbody>");
-
-            //#region api Data To MailForm
-
-            //for (int i = 0; i < dt.Rows.Count; i++)
-            //{
-            //    DataRow dr = dt.Rows[i];
-            //    mailForm.Append("<tr>");
-            //    mailForm.Append("<td style='padding: 10px; vertical-align: top; border-bottom: 1px solid #ccc; background: #eee;'>" + dr["taskName"] + "</td>");
-            //    mailForm.Append("<td style='padding: 10px; vertical-align: top; border-bottom: 1px solid #ccc; background: #eee;'><a href=" + dr["bidNtceDtlUrl"] + " target='_blank'>" + dr["bidNtceNo"] + "-" + dr["bidNtceOrd"] + "</a></td>");
-            //    mailForm.Append("<td style='padding: 10px; vertical-align: top; border-bottom: 1px solid #ccc; background: #eee;'><a href=" + dr["bidNtceDtlUrl"] + " target='_blank'>");
-
-            //    #region keyword Mark
-
-            //    string mailFormComplete = dr["bidNtceNm"].ToString();
-            //    string[] keywordSplit = keyword.Split('/');
-            //    for (int z = 0; z < keywordSplit.Count(); z++)
-            //    {
-            //        mailFormComplete = mailFormComplete.Replace(keywordSplit[z], "<label style='color: white; background-color:red'>" + keywordSplit[z] + "</label>");
-            //    }
-            //    mailForm.Append(mailFormComplete);
-
-            //    #endregion keyword Mark
-
-            //    mailForm.Append("</a></td>");
-            //    mailForm.Append("<td style='padding: 10px; vertical-align: top; border-bottom: 1px solid #ccc; background: #eee;'>" + dr["ntceInsttNm"] + "</td>");
-            //    mailForm.Append("<td style='padding: 10px; vertical-align: top; border-bottom: 1px solid #ccc; background: #eee;'>" + dr["cntrctCnclsMthdNm"] + "</td>");
-            //    mailForm.Append("<td style='padding: 10px; vertical-align: top; border-bottom: 1px solid #ccc; background: #eee;'>" + dr["ntceKindNm"] + "</td>");
-            //    mailForm.Append("<td style='padding: 10px; vertical-align: top; border-bottom: 1px solid #ccc; background: #eee;'>" + dr["bidBeginDt"] + "</br>(" + dr["bidClseDt"] + ")</td>");
-            //    mailForm.Append("</tr>");
-            //}
-
-            //#endregion api Data To MailForm
-
-            //mailForm.Append("           </tbody>");
-            //mailForm.Append("       </table>");
-            //mailForm.Append("       <br />");
-            //mailForm.Append("       감사합니다.");
-            //mailForm.Append("   </body>");
-            //mailForm.Append("</html>");
-
-            #endregion mailForm
-
             return mailForm.ToString();
         }
 
@@ -249,8 +149,8 @@ namespace KONEPS_KPC_MailBatch
         {
             if (mailForm.Length < 9000000 )
             {
-                MailMessage msg = new MailMessage("account@kpc.or.kr", mailTo);
-                msg.Subject = "[디지털혁신센터] " + DateTime.Now.ToString("MM.dd") + " 나라장터 입찰정보(사전규격/입찰)";
+                MailMessage msg = new MailMessage("test", mailTo);
+                msg.Subject = "나라장터 입찰정보(사전규격/입찰)";
                 msg.IsBodyHtml = true;
                 msg.Body = mailForm;
 
@@ -258,7 +158,7 @@ namespace KONEPS_KPC_MailBatch
                 {
                     //client.EnableSsl = true;
                     //client.UseDefaultCredentials = true;
-                    client.Credentials = new System.Net.NetworkCredential("account@kpc.or.kr", "$$$kpc1004");
+                    client.Credentials = new System.Net.NetworkCredential("test", "test");
                     client.Send(msg);
 
                     DbConnection db = new DbConnection();
