@@ -9,12 +9,10 @@ namespace KONEPS_KPC_MailBatch
     internal class DbConnection
     {
         private string connectionString = "server = localhost; uid = sa; pwd = 1111; database = PrivateData;";
-        //private string connectionString = "server = 10.1.10.16; uid = kpckoneps; pwd = $skfkwkdxj; database = KONEPS_KPC;";
-        private string ERP_connectionString = "server = 10.1.10.21; uid = kpckoneps; pwd = $skfkwkdxj; database = KPC;";
 
         public DataSet ERP_SelectUser()
         {
-            string queryString = "select * from kpc_TPEAcKg2bMailKeyWordEnter";
+            string queryString = "select * from test";
             using (SqlConnection sqlConn = new SqlConnection(ERP_connectionString))
             {
                 DataSet ds = new DataSet();
@@ -33,7 +31,7 @@ namespace KONEPS_KPC_MailBatch
                 SqlCommand sqlComm = new SqlCommand();
                 sqlComm.Connection = sqlConn;
                 sqlConn.Open();
-                sqlComm.CommandText = "EXEC ERP_USER_TO_KPC_USER @ID,@EMail,@EMailKeyWord,@EnterDate,@EmpSeq";
+                sqlComm.CommandText = "EXEC test @ID,@EMail,@EMailKeyWord,@EnterDate,@EmpSeq";
                 
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                 {
@@ -57,7 +55,7 @@ namespace KONEPS_KPC_MailBatch
         /// <returns></returns>
         public List<DbSelectModel> SelectUser()
         {
-            string queryString = "select * from KPC_USER where keyword != ''";
+            string queryString = "select * from test where keyword != ''";
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
                 DataSet ds = new DataSet();
@@ -108,7 +106,7 @@ namespace KONEPS_KPC_MailBatch
                     SqlCommand sqlComm = new SqlCommand();
                     sqlComm.Connection = sqlConn;
                     sqlConn.Open();
-                    sqlComm.CommandText = "insert into KONEPS (ntceKindNm,bidNtceDtlUrl,cntrctCnclsMthdNm,taskName,bidNtceNm,bidNtceNo,bidNtceOrd,presmptPrce,d2bMngBssamt,bidNtceDt,opengDt,bidBeginDt,bidClseDt,ntceInsttNm,dminsttNm,ntceInsttOfclNm,ntceInsttOfclTelNo,CreateDt,asignBdgtAmt) " +
+                    sqlComm.CommandText = "insert into test (ntceKindNm,bidNtceDtlUrl,cntrctCnclsMthdNm,taskName,bidNtceNm,bidNtceNo,bidNtceOrd,presmptPrce,d2bMngBssamt,bidNtceDt,opengDt,bidBeginDt,bidClseDt,ntceInsttNm,dminsttNm,ntceInsttOfclNm,ntceInsttOfclTelNo,CreateDt,asignBdgtAmt) " +
                         "values (@ntceKindNm,@bidNtceDtlUrl,@cntrctCnclsMthdNm,@taskName,@bidNtceNm,@bidNtceNo,@bidNtceOrd,@presmptPrce,@d2bMngBssamt,@bidNtceDt,@opengDt,@bidBeginDt,@bidClseDt,@ntceInsttNm,@dminsttNm,@ntceInsttOfclNm,@ntceInsttOfclTelNo,@CreateDt,@asignBdgtAmt)";
 
                     for (int i = 0; i < list.Count; i++)
@@ -156,7 +154,7 @@ namespace KONEPS_KPC_MailBatch
                 SqlCommand sqlComm = new SqlCommand();
                 sqlComm.Connection = sqlConn;
                 sqlConn.Open();
-                sqlComm.CommandText = "insert into KONEPS_Sub (prdctClsfcNoNm,bfSpecRgstNo,asignBdgtAmt,rcptDt,opninRgstClseDt,orderInsttNm,rlDminsttNm,ofclNm,ofclTelNo,taskName,CreateDt,bidNtceDtlUrl) " +
+                sqlComm.CommandText = "insert into test (prdctClsfcNoNm,bfSpecRgstNo,asignBdgtAmt,rcptDt,opninRgstClseDt,orderInsttNm,rlDminsttNm,ofclNm,ofclTelNo,taskName,CreateDt,bidNtceDtlUrl) " +
                     "values (@prdctClsfcNoNm,@bfSpecRgstNo,@asignBdgtAmt,@rcptDt,@opninRgstClseDt,@orderInsttNm,@rlDminsttNm,@ofclNm,@ofclTelNo,@taskName,@CreateDt,@bidNtceDtlUrl)";
 
                 for (int i = 0; i < list.Count; i++)
@@ -190,7 +188,7 @@ namespace KONEPS_KPC_MailBatch
                 SqlCommand sqlComm = new SqlCommand();
                 sqlComm.Connection = sqlConn;
                 sqlConn.Open();
-                sqlComm.CommandText = "insert into OpengResultListInfoServc (taskName,bidNtceNo,bidNtceOrd,bidClsfcNo,rbidNo,bidNtceNm,dminsttNm,opengDt,prtcptCnum,opengCorpInfo,enterName,bddprDlamt,bddprRT,progrsDivCdNm,CreateDt) " +
+                sqlComm.CommandText = "insert into test (taskName,bidNtceNo,bidNtceOrd,bidClsfcNo,rbidNo,bidNtceNm,dminsttNm,opengDt,prtcptCnum,opengCorpInfo,enterName,bddprDlamt,bddprRT,progrsDivCdNm,CreateDt) " +
                     "values (@taskName,@bidNtceNo,@bidNtceOrd,@bidClsfcNo,@rbidNo,@bidNtceNm,@dminsttNm,@opengDt,@prtcptCnum,@opengCorpInfo,@enterName,@bddprDlamt,@bddprRT,@progrsDivCdNm,@CreateDt)";
 
                 for (int i = 0; i < list.Count; i++)
@@ -227,7 +225,7 @@ namespace KONEPS_KPC_MailBatch
                 SqlCommand sqlComm = new SqlCommand();
                 sqlComm.Connection = sqlConn;
                 sqlConn.Open();
-                sqlComm.CommandText = "insert into ScsbidListSttusServc (taskName,bidNtceNo,bidNtceOrd,bidClsfcNo,rbidNo,bidNtceNm,dminsttNm,rlOpengDt,prtcptCnum,bidwinnrNm,sucsfbidAmt,sucsfbidRate,CreateDt) " +
+                sqlComm.CommandText = "insert into test (taskName,bidNtceNo,bidNtceOrd,bidClsfcNo,rbidNo,bidNtceNm,dminsttNm,rlOpengDt,prtcptCnum,bidwinnrNm,sucsfbidAmt,sucsfbidRate,CreateDt) " +
                     "values (@taskName,@bidNtceNo,@bidNtceOrd,@bidClsfcNo,@rbidNo,@bidNtceNm,@dminsttNm,@rlOpengDt,@prtcptCnum,@bidwinnrNm,@sucsfbidAmt,@sucsfbidRate,@CreateDt)";
 
                 for (int i = 0; i < list.Count; i++)
@@ -263,7 +261,7 @@ namespace KONEPS_KPC_MailBatch
         {
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                SqlDataAdapter _SqlDataAdapter = new SqlDataAdapter("EXEC KONEP_KEYWORD_LIST '" + keyword + "','" + date + "'", sqlConn);
+                SqlDataAdapter _SqlDataAdapter = new SqlDataAdapter("EXEC test '" + keyword + "','" + date + "'", sqlConn);
 
                 DataTable dt = new DataTable();
                 _SqlDataAdapter.Fill(dt);
@@ -276,7 +274,7 @@ namespace KONEPS_KPC_MailBatch
         {
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                SqlDataAdapter _SqlDataAdapter = new SqlDataAdapter("EXEC KONEP_SUB_KEYWORD_LIST '" + keyword + "','" + date + "'", sqlConn);
+                SqlDataAdapter _SqlDataAdapter = new SqlDataAdapter("EXEC test '" + keyword + "','" + date + "'", sqlConn);
 
                 DataTable dt = new DataTable();
                 _SqlDataAdapter.Fill(dt);
@@ -293,7 +291,7 @@ namespace KONEPS_KPC_MailBatch
                 SqlCommand sqlComm = new SqlCommand();
                 sqlComm.Connection = sqlConn;
                 sqlConn.Open();
-                sqlComm.CommandText = "insert into DALIY_MAIL_CHECK (Email, MAIL_CHECK, CreateDt) " +
+                sqlComm.CommandText = "insert into test (Email, MAIL_CHECK, CreateDt) " +
                     "values (@Email, @MAIL_CHECK, @CreateDt)";
 
                 sqlComm.Parameters.AddWithValue("@Email", mail);
@@ -308,7 +306,7 @@ namespace KONEPS_KPC_MailBatch
         {
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                SqlDataAdapter _SqlDataAdapter = new SqlDataAdapter("EXEC SCSBID_LIST '" + date + "'", sqlConn);
+                SqlDataAdapter _SqlDataAdapter = new SqlDataAdapter("EXEC test '" + date + "'", sqlConn);
 
                 DataTable dt = new DataTable();
                 _SqlDataAdapter.Fill(dt);
@@ -337,7 +335,7 @@ namespace KONEPS_KPC_MailBatch
                 SqlCommand sqlComm = new SqlCommand();
                 sqlComm.Connection = sqlConn;
                 sqlConn.Open();
-                sqlComm.CommandText = "insert into OpengResultListInfoOpengCompt (bidNtceNo,bidNtceOrd,bidClsfcNo,rbidNo,opengRank,prcbdrBizno,prcbdrNm,prcbdrCeoNm,bidprcAmt,bidprcrt,drwtNo1,drwtNo2,bidprcDt,rmrk,prcbdrBiznoLink,CreateDt) " +
+                sqlComm.CommandText = "insert into test (bidNtceNo,bidNtceOrd,bidClsfcNo,rbidNo,opengRank,prcbdrBizno,prcbdrNm,prcbdrCeoNm,bidprcAmt,bidprcrt,drwtNo1,drwtNo2,bidprcDt,rmrk,prcbdrBiznoLink,CreateDt) " +
                     "values (@bidNtceNo,@bidNtceOrd,@bidClsfcNo,@rbidNo,@opengRank,@prcbdrBizno,@prcbdrNm,@prcbdrCeoNm,@bidprcAmt,@bidprcrt,@drwtNo1,@drwtNo2,@bidprcDt,@rmrk,@prcbdrBiznoLink,@CreateDt)";
 
                 for (int i = 0; i < list.Count; i++)
@@ -372,7 +370,7 @@ namespace KONEPS_KPC_MailBatch
         {
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                SqlDataAdapter _SqlDataAdapter = new SqlDataAdapter("SELECT * FROM OpengResultListInfoOpengCompt where CreateDt = '"+ date + "'", sqlConn);
+                SqlDataAdapter _SqlDataAdapter = new SqlDataAdapter("SELECT * FROM test where CreateDt = '"+ date + "'", sqlConn);
 
                 DataTable dt = new DataTable();
                 _SqlDataAdapter.Fill(dt);
@@ -385,7 +383,7 @@ namespace KONEPS_KPC_MailBatch
         {
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                SqlDataAdapter _SqlDataAdapter = new SqlDataAdapter("SELECT * FROM OpengResultListInfoOpengCompt", sqlConn);
+                SqlDataAdapter _SqlDataAdapter = new SqlDataAdapter("SELECT * FROM test", sqlConn);
 
                 DataTable dt = new DataTable();
                 _SqlDataAdapter.Fill(dt);
@@ -401,7 +399,7 @@ namespace KONEPS_KPC_MailBatch
                 SqlCommand sqlComm = new SqlCommand();
                 sqlComm.Connection = sqlConn;
                 sqlConn.Open();
-                sqlComm.CommandText = "insert into TechEvalScore (bidNtceNo,bidNtceOrd,bidClsfcNo,rbidNo,prcbdrBizno,prcbdrBizNm,bidPricePoint,tchQvlnPoint,gnrlzQvlnPoint,openLocation,openDate,CreateDt) " +
+                sqlComm.CommandText = "insert into test (bidNtceNo,bidNtceOrd,bidClsfcNo,rbidNo,prcbdrBizno,prcbdrBizNm,bidPricePoint,tchQvlnPoint,gnrlzQvlnPoint,openLocation,openDate,CreateDt) " +
                     "values (@bidNtceNo,@bidNtceOrd,@bidClsfcNo,@rbidNo,@prcbdrBizno,@prcbdrBizNm,@bidPricePoint,@tchQvlnPoint,@gnrlzQvlnPoint,@openLocation,@openDate,@CreateDt)";
 
                 for (int i = 0; i < list.Count; i++)
@@ -431,7 +429,7 @@ namespace KONEPS_KPC_MailBatch
         {
             using (SqlConnection sqlConn = new SqlConnection(connectionString))
             {
-                SqlDataAdapter _SqlDataAdapter = new SqlDataAdapter("SELECT bidNtceNo FROM KONEPS WHERE taskName = '" + gubun + "'", sqlConn);
+                SqlDataAdapter _SqlDataAdapter = new SqlDataAdapter("SELECT bidNtceNo FROM test WHERE taskName = '" + gubun + "'", sqlConn);
 
                 DataTable dt = new DataTable();
                 _SqlDataAdapter.Fill(dt);
