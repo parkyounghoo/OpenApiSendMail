@@ -115,16 +115,16 @@ namespace KONEPS_KPC_MailBatch
 
                 SetText("▶ (" + mailSendCount + ") 메일 발송 완료" + DateTime.Now);
                 mailForm mailResult = new mailForm();
-                mailResult.SendMail("▶ (전체 : " + modelList.Count + "중, " + mailSendCount + ") 메일 발송 완료" + DateTime.Now, "yhpark@kpc.or.kr", DateTime.Now.AddDays(-1).ToString("yyyyMMdd"));
-                mailResult.SendMail("▶ (전체 : " + modelList.Count + "중, " + mailSendCount + ") 메일 발송 완료" + DateTime.Now, "mschoi@kpc.or.kr", DateTime.Now.AddDays(-1).ToString("yyyyMMdd"));
+                mailResult.SendMail("▶ (전체 : " + modelList.Count + "중, " + mailSendCount + ") 메일 발송 완료" + DateTime.Now, "test", DateTime.Now.AddDays(-1).ToString("yyyyMMdd"));
+                mailResult.SendMail("▶ (전체 : " + modelList.Count + "중, " + mailSendCount + ") 메일 발송 완료" + DateTime.Now, "test", DateTime.Now.AddDays(-1).ToString("yyyyMMdd"));
             }
             catch (Exception ex)
             {
                 SetText("▶ 메일 발송 실패 " + DateTime.Now);
 
                 mailForm mail = new mailForm();
-                mail.SendMail(ex.Message, "yhpark@kpc.or.kr", DateTime.Now.AddDays(-1).ToString("yyyyMMdd"));
-                mail.SendMail(ex.Message, "mschoi@kpc.or.kr", DateTime.Now.AddDays(-1).ToString("yyyyMMdd"));
+                mail.SendMail(ex.Message, "test", DateTime.Now.AddDays(-1).ToString("yyyyMMdd"));
+                mail.SendMail(ex.Message, "test", DateTime.Now.AddDays(-1).ToString("yyyyMMdd"));
                 throw;
             }
         }
